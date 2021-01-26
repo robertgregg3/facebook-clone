@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Avatar } from "@material-ui/core";
 import VideoCamIcon from "@material-ui/icons/Videocam";
 import PhotoLibraryIcon from "@material-ui/icons/PhotoLibrary";
@@ -6,8 +6,12 @@ import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
 import "../css/MessageSender.css";
 
 function MessageSender() {
+  const [text, setText] = useState("");
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    setText("");
   };
 
   return (
@@ -18,6 +22,8 @@ function MessageSender() {
           <input
             className="messageSender__input"
             placeholder={`What's on your mind?`}
+            value={text}
+            onChange={(e) => setText(e.target.value)}
           />
           <button onClick={handleSubmit} type="submit">
             Hidden Submit
