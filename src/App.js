@@ -6,7 +6,7 @@ import Sidebar from "./Components/Sidebar";
 import "./css/app.css";
 
 function App() {
-  const user = "steve";
+  const user = null;
 
   return (
     <div className="app">

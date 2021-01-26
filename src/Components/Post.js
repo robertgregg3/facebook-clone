@@ -1,12 +1,7 @@
 import React from "react";
 import { Avatar } from "@material-ui/core";
 import "../css/Post.css";
-import {
-  AccountCircle,
-  ChatBubbleOutline,
-  ExpandMoreOutlined,
-  ThumbUpOutlined,
-} from "@material-ui/icons";
+import { ChatBubbleOutline, ThumbUpOutlined } from "@material-ui/icons";
 import ReplyIcon from "@material-ui/icons/Reply";
 
 function Post({ profilePic, image, username, timestamp, message }) {
@@ -24,7 +19,7 @@ function Post({ profilePic, image, username, timestamp, message }) {
       </div>
 
       <div className="post__image">
-        <img src={image} />
+        <img src={image} alt="image" />
       </div>
 
       <div className="post__options">
