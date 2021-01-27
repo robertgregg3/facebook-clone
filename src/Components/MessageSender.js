@@ -36,6 +36,10 @@ function MessageSender() {
     setText("");
   };
 
+  const handleRemove = () => {
+    setFileUrl(null);
+  };
+
   return (
     <div className="messageSender">
       <div className="messageSender__top">
@@ -59,6 +63,13 @@ function MessageSender() {
         <div className="messageSender__option">
           <VideoCamIcon style={{ color: "#f02849" }} />
           <h3>Live Video</h3>
+          <small className="messageSender__fileUrl">
+            {fileUrl !== null ? (
+              <button onClick={handleRemove}>Remove image</button>
+            ) : (
+              ""
+            )}
+          </small>
         </div>
         <div className="messageSender__option">
           <form>
