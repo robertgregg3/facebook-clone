@@ -4,12 +4,20 @@ import facebookTextLogo from "../images/facebook-text-logo.png";
 import "../css/Login.css";
 import { Button } from "@material-ui/core";
 import { auth, provider, provider2 } from "../firebase";
+import { useStateValue } from "../Contexts/StateProvider";
+import { actionTypes } from "../Contexts/Reducer";
 
 function Login() {
+  const [state, dispatch] = useStateValue();
+
   const signIn = () => {
     auth
       .signInWithPopup(provider)
       .then((result) => {
+        dispatch({
+          type: actionTypes.SET_USER,
+          user: result.user,
+        });
         console.log(result);
       })
       .catch((error) => alert(error.message));
@@ -19,6 +27,10 @@ function Login() {
     auth
       .signInWithPopup(provider2)
       .then((result) => {
+        dispatch({
+          type: actionTypes.SET_USER,
+          user: result.user,
+        });
         console.log(result);
       })
       .catch((error) => alert(error.message));
