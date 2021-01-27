@@ -5,13 +5,33 @@ import PhotoLibraryIcon from "@material-ui/icons/PhotoLibrary";
 import InsertEmoticonIcon from "@material-ui/icons/InsertEmoticon";
 import "../css/MessageSender.css";
 import { useStateValue } from "../Contexts/StateProvider";
+import db from "../firebase";
+import firebase from "firebase";
+import { firebaseApp } from "../firebase";
 
 function MessageSender() {
   const [{ user }, dispatch] = useStateValue();
   const [text, setText] = useState("");
+  const [fileUrl, setFileUrl] = useState(null);
+
+  const handleFileChange = async (e) => {
+    const file = e.target.files[0];
+    const storageRef = firebaseApp.storage().ref();
+    const fileRef = storageRef.child(file.name);
+    await fileRef.put(file); // add file to firebase storage
+    setFileUrl(await fileRef.getDownloadURL()); // get the image url that we uploaded
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    db.collection("posts").add({
+      message: text,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+      profilePic: user.photoURL,
+      username: user.displayName,
+      image: fileUrl,
+    });
 
     setText("");
   };
@@ -28,7 +48,7 @@ function MessageSender() {
             onChange={(e) => setText(e.target.value)}
           />
           <button onClick={handleSubmit} type="submit">
-            Hidden Submit
+            Post
           </button>
         </form>
       </div>
@@ -38,8 +58,11 @@ function MessageSender() {
           <h3>Live Video</h3>
         </div>
         <div className="messageSender__option">
-          <PhotoLibraryIcon style={{ color: "#45bd62" }} />
-          <h3>Photo/Video</h3>
+          <form>
+            <PhotoLibraryIcon style={{ color: "#45bd62" }} />
+            <h3>Photo/Video</h3>
+            <input type="file" onChange={handleFileChange} />
+          </form>
         </div>
         <div className="messageSender__option">
           <InsertEmoticonIcon style={{ color: "#f7b928" }} />
