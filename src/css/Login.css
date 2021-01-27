@@ -9,7 +9,7 @@
   flex-direction: column;
   align-items: center;
   background-color: #fff;
-  padding: 50px;
+  padding: 75px;
   width: 100%;
   max-width: 400px;
   border-radius: 6px;
@@ -22,13 +22,25 @@
   margin-bottom: 50px;
 }
 
-.login__container > button {
+.login__container > .login__button--fb {
   width: 200px;
   background-color: #2e81f4;
   color: #eff2f5;
   font-weight: 500;
 }
 
-.login__container > button:hover {
+.login__container > .login__button--fb:hover {
   background-color: #4591fc;
+}
+
+.login__container > .login__button--google {
+  width: 200px;
+  background-color: #f4352e;
+  color: #eff2f5;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.login__container > .login__button--google:hover {
+  background-color: #fc4545;
 }
