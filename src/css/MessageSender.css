@@ -54,7 +54,7 @@
   align-items: center;
   cursor: pointer;
   font-size: 14px;
-  padding: 20px;
+  padding: 10px;
   color: gray;
 }
 
@@ -65,4 +65,17 @@
 .messageSender__option:hover {
   background-color: #eff2f5;
   border-radius: 20px;
+}
+
+#file {
+  display: none;
+}
+
+label {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 10px;
+  cursor: pointer;
 }

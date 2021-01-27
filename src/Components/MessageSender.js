@@ -62,9 +62,16 @@ function MessageSender() {
         </div>
         <div className="messageSender__option">
           <form>
-            <PhotoLibraryIcon style={{ color: "#45bd62" }} />
-            <h3>Photo/Video</h3>
-            <input type="file" onChange={handleFileChange} />
+            <input
+              type="file"
+              id="file"
+              accept="image/*"
+              onChange={handleFileChange}
+            />
+            <label for="file">
+              <PhotoLibraryIcon style={{ color: "#45bd62" }} />
+              <h3>Photo/Video</h3>
+            </label>
           </form>
         </div>
         <div className="messageSender__option">
