@@ -47,7 +47,10 @@ function MessageSender() {
             value={text}
             onChange={(e) => setText(e.target.value)}
           />
-          <button onClick={handleSubmit} type="submit">
+          <button
+            onClick={handleSubmit}
+            type="submit"
+            className={text === "" ? "" : "active"}>
             Post
           </button>
         </form>

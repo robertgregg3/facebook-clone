@@ -30,7 +30,17 @@
 }
 
 .messageSender__top > form > button {
-  display: none;
+  width: 100px;
+  border-radius: 10px;
+  border: none;
+  color: gray;
+  font-weight: 600;
+}
+
+.messageSender__top > form > button.active {
+  color: #ffffff;
+  background-color: #2e81f4;
+  cursor: pointer;
 }
 
 .messageSender__bottom {
